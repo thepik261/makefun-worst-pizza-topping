@@ -9,15 +9,15 @@ no network, no input files.
 import os
 
 LINE = (
-    "Our new pizza topping: lukewarm mayonnaise, lovingly spread by a chef "
-    "who lost a bet \u2014 creamy, confusing, and legally still food."
+    "Our new pizza topping: lukewarm mayonnaise, spread by a chef who lost "
+    "a bet \u2014 creamy, confusing, and legally still food."
 )
 
 
 def main() -> None:
-    text = LINE.strip()
+    text = " ".join(LINE.split())
     assert 1 <= len(text) <= 200, f"line is {len(text)} chars, must be 1-200"
-    assert text.strip(), "line must not be only whitespace"
+    assert text.endswith("."), "line must end with a period"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(text)
